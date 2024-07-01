@@ -20,8 +20,19 @@ if(session_status()==PHP_SESSION_NONE){
     </header>
     </div>
     <main>
-        <p><div class="Tuto"><?php echo isset($_SESSION['username']) ? 'Hello, ' . $_SESSION['username'] . '! ' : 'Login or Register so '; ?>you can buy our products here</p></div>
+        <p><div class="Tuto"><?php echo isset($_SESSION['username']) ? 'Hello, ' . $_SESSION['username'] . '! ' : 'Login or Register so '; ?>you can buy our products here</p>
+    </div>
         <?php if (isset($_SESSION['username'])): ?>
+            <div class="Tuto">
+            <?php
+                include 'db.php' ; 
+                $username = $_SESSION['username'];
+                $user_money = "SELECT money FROM users WHERE username='$username' ";
+                $user_money_res =mysqli_query($conn,$user_money);
+                $row=mysqli_fetch_assoc($user_money_res);
+                echo "Your money : " . $row['money'] . "DT" ;
+            ?>
+            </div>
             <p><div class="hyper"><button><a href="product.php">Go to Product Page</a></button></div>
             <div class="Tuto">or</div>
             <div class="hyper"><button><a href="logout.php">logout</a></button></div>

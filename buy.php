@@ -80,19 +80,45 @@ if ($httpCode === 200) {
     echo "Payment initiation failed: HTTP Code $httpCode";
 }*/
 ?>
+<?php include 'header.php'; ?>
 <?php
-session_start();
+if(session_status() == PHP_SESSION_NONE){
+    session_start();
+}
 
+include 'db.php';
 if (!isset($_SESSION['username'])) {
     header("Location: login.php");
     exit();
 }
-
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Simulate successful payment
-    $_SESSION['payment_status'] = 'success';
-    header("Location: success.php");
-    exit();
+    $username=$_SESSION['username'];
+    $product_id = $_POST['product_id'];
+    $user_sql = "SELECT * FROM users WHERE username='$username'";
+    $product_sql ="SELECT * FROM products WHERE id='$product_id'" ;
+    $user_result=mysqli_query($conn,$user_sql);
+    $product_result=mysqli_query($conn,$product_sql);
+    if($user_result && $product_result && mysqli_num_rows($user_result)>0 && mysqli_num_rows($product_result)>0){
+        $user = mysqli_fetch_assoc($user_result);
+        $product = mysqli_fetch_assoc($product_result);
+        if($user['money']>=$product['price']){
+            $new_money = $user['money']-$product['price'];
+            $update_sql = "UPDATE users SET money='$new_money' where username='$username'";
+            if(mysqli_query($conn,$update_sql)){
+                $_SESSION['payment_status'] = 'success';
+                header("Location: success.php");
+                exit();
+            }else{
+                echo "Error Updating record" . mysqli_error($conn);
+            }
+        }else{
+            $_SESSION['payment_status']='failed';
+            header("Location: fail.php");
+            exit();
+        }
+    }else{
+        echo "user or product are not found." ;
+    }
 }
 ?>
 
@@ -101,6 +127,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="CSS/style.css">
     <title>Simulated Payment</title>
 </head>
 <body>

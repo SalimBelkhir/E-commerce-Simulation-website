@@ -37,6 +37,7 @@ nav ul li a {
 
 h2 {
     color: #333;
+    text-align: center;
 }
 
 .Title {
@@ -114,6 +115,10 @@ button:hover {
 .hyper{
     font-size: 1.2em;
     text-align: center;
+}
+.products_img{
+    border: 10px solid rgb(17, 17, 17);
+    border-radius: 5px;
 }
 .product{
     border: 10px solid rgb(43, 43, 43);

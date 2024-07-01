@@ -1,38 +1,56 @@
 <?php include 'header.php'; ?>
+<?php
+include 'db.php' ;
+
+if(!isset($_SESSION['username'])) {
+    header("Location: login.php");
+    exit();
+}
+$username = $_SESSION['username'];
+
+$sql = "SELECT * FROM products" ;
+$result = mysqli_query($conn ,$sql);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome to the E-commerce Website</title>
-    <link rel="stylesheet" href="CSS/styles.css"> 
+    <title>Products</title>
+    <link rel="stylesheet" href="CSS/style.css">
 </head>
-<main>
-    <div class="Tuto">
-      <h2> Products Page   </h2>
-    </div>
-    <aside>Lorem ipsum dolor, 
-        sit amet consectetur adipisicing elit. 
-        Nihil deleniti, hic explicabo magni adipisci
-         quos sint, consequatur repudiandae consectetur 
-         nesciunt sequi facere officiis nam inventore 
-         culpa vero optio voluptas alias?
-         Lorem ipsum dolor sit, amet consectetur
-          adipisicing elit. Cupiditate mollitia 
-          sunt et non possimus eveniet voluptas voluptates, 
-          reiciendis enim nostrum, praesentium iusto amet quidem
-           rem quasi,
-          natus vitae ipsa optio.
-</aside> 
-<img src="images/VERONICA.jpg" alt="image of cup of juice" height="200" width="200" class="product"><br>        
-<form action="buy.php" method="post" class="buy" >
-
-      <p>  Orange juice  <br>
-           Price : 4 DT
-      </p>
-    <input type="hidden" name="amount" value="10000">
-    <input type="submit" value="Buy Now">
-</form>
-</main>
+<body>
+    <main>
+        <h2>Products</h2>
+            <?php while ($row = mysqli_fetch_assoc($result)): ?>
+                <div class="product">
+                    <img src="<?php echo $row['image'] ; ?>" alt="<?php echo $row['name'] ; ?>" width="200" class="products_img">
+                    <aside>
+                        <div><h2>Description:</h2></div>
+                        <?php echo $row['description']; ?>
+                        <p>Lorem ipsum dolor sit amet 
+                            consectetur adipisicing elit.
+                             Necessitatibus maxime unde impedit
+                              reprehenderit voluptatem laboriosam 
+                              aut optio ab assumenda voluptates in itaque,
+                               sequi, veniam temporibus incidunt magni,
+                                ex illo! Necessitatibus.</p>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                             Ipsam qui iure distinctio voluptates quaerat aliquam
+                              dolorum perspiciatis provident eos delectus, laborum, 
+                              excepturi, officia sed. Perspiciatis sequi aut
+                               doloribus ad consectetur.</p>
+                    </aside>
+                    <h3><?php echo $row['name']; ?></h3>
+                    <p>
+                        Price:<?php echo $row['price']; ?> DT
+                    </p>
+                    <form action="buy.php" method="post">
+                        <input type="hidden" name="product_id" value="<?php echo $row['id'] ;?>">
+                        <button type="submit"><a>Buy Now</a></button>
+                    </form>
+                </div>
+            <?php endwhile; ?>
+    </main>
 </body>
 </html>
