@@ -1,0 +1,110 @@
+*{
+    box-sizing: border-box;
+}
+body{
+    margin:0px;
+}
+h2{
+    text-align: center;
+    background-color: rgb(151, 151, 151);
+    padding: 35px;
+    margin-bottom: -10px;
+}
+.navbar{
+    background-color: rgb(70, 70, 70);
+    height: 50px;
+}
+aside{
+    width:20% ;
+    float: left;
+    padding: 10px;
+}
+article{
+    width:40%;
+    float:left;
+    padding:10px;
+}
+section{
+    width:40%;
+    float:left;
+    padding:10px;
+}
+footer{
+    font-size:1.2em;
+    display: block;
+    clear: both;
+    text-align: center;
+    background-color: rgb(151, 151, 151);
+    padding: 35px;
+    margin-bottom: -10px;
+}
+@media screen and (max-width:600px){
+    aside,section,article{
+        width:100%;
+    }
+}
+.gallery{
+    display: inline-block;
+    border:1px solid hsl(0, 0%, 43%);
+    margin:5px
+}
+.gallery .description{
+    padding: 10px;
+    text-align: center;
+}
+.gallery :hover{
+    border:1px solid hsl(0, 0%, 9%)
+}
+.container{
+    display:flex ;
+    border:10px solid black;
+    height:90vh;
+}
+.box{
+    height: 150px;
+    width: 150px ;
+    font-size: 7em;
+    text-align: center;
+    border-radius: 15px;
+    padding: 10px;
+}
+#box1{
+    background-color: red;
+    
+}
+#box2{
+    background-color: hsl(162, 70%, 44%);
+    
+}
+#box3{
+    background-color: rgb(201, 40, 193);
+    
+}
+#box4{
+    background-color: rgb(34, 107, 190);
+    
+}
+body{
+    margin:0;
+}
+#Box1{
+    width:200px;
+    height:200px;
+    border:5px solid black ;
+    font-size: 10em;
+    text-align: center;
+    background-color: aquamarine;
+    transform: translateX(14px);
+    animation-name: grow;
+    animation-duration:2s;
+}
+/*@keyframes slideLeft{
+    from{transform:translateX(100px)}
+}
+@keyframes slideRight{
+    to{transform:translateX(300%)}
+}*/
+
+@keyframes grow{
+    25%{transform: scale(0.5,0.5)}
+}
