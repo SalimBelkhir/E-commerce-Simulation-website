@@ -1,7 +1,4 @@
-body{
-    background-color: antiquewhite;
-    margin:0 ;
-}
+
 #cntlabel{
     display:block;
     font-size: 1em;
@@ -25,21 +22,5 @@ button:hover{
     background-color: hsl(0, 82%, 34%);
 }
 form{
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: rgb(255, 255, 255);
-    margin: auto;
-    box-shadow:5px 5px 15px rgb(97, 97, 97) ;
-    padding:25px ;
-    text-align : center ;
-    border-radius:20px ;
-    max-width: 400px;
-}
-h1{
-    color: hsl(61, 40%, 39%);
-}
-#clock-container{
-    display:flex;
-    justify-items: center;
-    align-items: center;
-    height: 100vh;
+    background-color: rgb(180, 180, 180);
 }

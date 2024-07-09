@@ -1,6 +1,11 @@
 body{
     background-color: antiquewhite;
     margin:0 ;
+    background-image: url(images/usop.jpg);
+    background-position: center;
+    background-repeat:no-repeat ;
+    background-size: cover;
+    background-attachment:fixed ;
 }
 #cntlabel{
     display:block;
@@ -35,11 +40,19 @@ form{
     max-width: 400px;
 }
 h1{
-    color: hsl(61, 40%, 39%);
+    color: hsl(60, 7%, 89%);
 }
-#clock-container{
+#container{
     display:flex;
-    justify-items: center;
+    justify-content: center;
     align-items: center;
-    height: 100vh;
+    height:100vh;   
+}
+
+#display{
+    color: aliceblue;
+    font-family: monospace;
+    font-size: 6.5em;
+    font-weight: bold;
+    text-align: center;
 }

@@ -22,6 +22,19 @@ $result = mysqli_query($conn ,$sql);
 <body>
     <main>
         <h2>Products</h2>
+        <div class="SearchBar">
+        <input type="text" id="searchBar" placeholder="Search for products...">
+        <style>
+            .SearchBar{
+                text-align: center;
+             }
+             .SearchBar button{
+                color: white;
+             }
+        </style>
+        <button onclick="searchProduct()">Search</button>
+        </div>
+        <div id="productList">
             <?php while ($row = mysqli_fetch_assoc($result)): ?>
                 <div class="product">
                     <img src="<?php echo $row['image'] ; ?>" alt="<?php echo $row['name'] ; ?>" width="200" class="products_img">
@@ -51,6 +64,8 @@ $result = mysqli_query($conn ,$sql);
                     </form>
                 </div>
             <?php endwhile; ?>
+        </div>    
     </main>
+    <script src="search.js"></script>
 </body>
 </html>
