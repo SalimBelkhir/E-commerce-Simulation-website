@@ -1,4 +1,5 @@
 class TreeNode{
+    
     constructor(value){
         this.value = value;
         this.children = [];
@@ -6,13 +7,16 @@ class TreeNode{
 }
 
 class Tree{
+
     constructor(){
         this.root = new TreeNode(null);
     }
+
     insert(value){
         const newNode = new TreeNode(value);
         this.root.children.push(newNode);
     }
+
     search(value){
         const result = [];
         const stack = [this.root];
@@ -28,7 +32,9 @@ class Tree{
         return result;
     }
 }
+
 const productTree = new Tree();
+
 document.addEventListener(`DOMContentLoaded`,()=>{
     const productList = document.querySelectorAll('.product h3');
     productList.forEach(product => {

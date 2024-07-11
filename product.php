@@ -41,21 +41,13 @@ $result = mysqli_query($conn ,$sql);
                     <aside>
                         <div><h2>Description:</h2></div>
                         <?php echo $row['description']; ?>
-                        <p>Lorem ipsum dolor sit amet 
-                            consectetur adipisicing elit.
-                             Necessitatibus maxime unde impedit
-                              reprehenderit voluptatem laboriosam 
-                              aut optio ab assumenda voluptates in itaque,
-                               sequi, veniam temporibus incidunt magni,
-                                ex illo! Necessitatibus.</p>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                             Ipsam qui iure distinctio voluptates quaerat aliquam
-                              dolorum perspiciatis provident eos delectus, laborum, 
-                              excepturi, officia sed. Perspiciatis sequi aut
-                               doloribus ad consectetur.</p>
                     </aside>
-                    <h3><?php echo $row['name']; ?></h3>
+                    <h3>
+                        <?php echo $row['Type'] . '<br>'; ?>
+                        <?php echo $row['name']; ?>
+                    </h3>
                     <p>
+                        Category:<?php echo $row['Type'] . '<br>'; ?>
                         Price:<?php echo $row['price']; ?> DT
                     </p>
                     <form action="buy.php" method="post">
@@ -65,7 +57,12 @@ $result = mysqli_query($conn ,$sql);
                 </div>
             <?php endwhile; ?>
         </div>    
+        <div id="recommendationSection">
+            <h2>Recommended Products</h2>
+            <div id="recommendationList"></div>
+        </div>
     </main>
     <script src="search.js"></script>
+    <script src="Recommendation.js"></script>
 </body>
 </html>
