@@ -15,7 +15,7 @@ function displayRecommendations(recommendations) {
     recommendations.forEach(productId => {
         const productDiv = document.createElement('div');
         productDiv.className = 'product';
-        productDiv.textContent = `Recommended Product ID: ${productId}`; // You can fetch and display product details based on the ID
+        productDiv.textContent = `Recommended Product ID: ${productId}`; 
         recommendationList.appendChild(productDiv);
     });
 }
