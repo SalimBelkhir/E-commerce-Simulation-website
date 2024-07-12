@@ -10,6 +10,7 @@ $username = $_SESSION['username'];
 
 $sql = "SELECT * FROM products" ;
 $result = mysqli_query($conn ,$sql);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -59,10 +60,10 @@ $result = mysqli_query($conn ,$sql);
         </div>    
         <div id="recommendationSection">
             <h2>Recommended Products</h2>
-            <div id="recommendationList"></div>
+            <div id="recommendationList">
+            </div>
         </div>
     </main>
     <script src="search.js"></script>
-    <script src="Recommendation.js"></script>
 </body>
 </html>
